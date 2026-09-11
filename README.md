@@ -50,10 +50,31 @@ notes) is left blank for you to fill in by hand as the application progresses.
 
 ## Usage
 
-Run the agent and paste in a job posting or a quick note:
+### One-time: set up the `add-app` shortcut
+
+A PowerShell function has been added to your profile
+(`$PROFILE`, i.e. `C:\Users\0zoel\OneDrive\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1`)
+so you can run the agent as `add-app` from any new PowerShell window instead
+of typing the full python command. If you ever move the project folder,
+update the paths in that function.
+
+### Adding a job
+
+With just a URL:
 
 ```
-.venv/Scripts/python.exe scripts/add_job.py
+add-app "https://example.com/careers/some-job"
+```
+
+The agent tries to fetch and read the page itself. Many job sites (LinkedIn,
+Indeed, etc.) block scraping or render content via JavaScript, so this won't
+always work -- if the fetch fails or comes back empty, it automatically
+falls back to asking you to paste the posting instead.
+
+With no URL, or as the fallback:
+
+```
+add-app
 ```
 
 Paste the text, then finish input with **Ctrl+Z then Enter** (Windows) or
@@ -77,7 +98,7 @@ jobtracker/
   sheets.py    Google Sheets connection and row-appending
 scripts/
   setup_sheet.py     One-time Tracker tab layout (headers, dropdown, formula)
-  add_job.py         Main entry point: paste text -> extract -> append row
+  add_job.py         Main entry point: URL (fetched) or pasted text -> extract -> append row
   test_connection.py Manual test: appends a fake row to confirm sheet access
   test_extract.py    Manual test: runs a sample posting through extraction
 ```

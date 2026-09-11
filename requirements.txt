@@ -3,3 +3,5 @@ google-auth
 python-dotenv
 groq
 pydantic
+requests
+beautifulsoup4
