@@ -1,0 +1,14 @@
+# Secrets — never commit these
+credentials/
+.env
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+*.egg-info/
+
+# OS
+.DS_Store
+Thumbs.db
