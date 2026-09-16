@@ -52,8 +52,8 @@ notes) is left blank for you to fill in by hand as the application progresses.
 
 ### One-time: set up the `add-app` shortcut
 
-A PowerShell function has been added to your profile
-(`$PROFILE`, i.e. `C:\Users\0zoel\OneDrive\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1`)
+Powershell function to your profile:
+(`$PROFILE`)
 so you can run the agent as `add-app` from any new PowerShell window instead
 of typing the full python command. If you ever move the project folder,
 update the paths in that function.
