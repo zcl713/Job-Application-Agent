@@ -50,13 +50,34 @@ notes) is left blank for you to fill in by hand as the application progresses.
 
 ## Usage
 
-### One-time: set up the `add-app` shortcut
+### One-time: set up the `add-app` shortcut (optional)
 
-Powershell function to your profile:
-(`$PROFILE`)
-so you can run the agent as `add-app` from any new PowerShell window instead
-of typing the full python command. If you ever move the project folder,
-update the paths in that function.
+To run the agent as `add-app` from any new PowerShell window instead of
+typing the full python command, add a function to your PowerShell profile.
+Open the profile (creating it if it doesn't exist) with:
+
+```
+notepad $PROFILE
+```
+
+and add:
+
+```powershell
+function add-app {
+    & "C:\path\to\job-app-agent\.venv\Scripts\python.exe" "C:\path\to\job-app-agent\scripts\add_job.py" @args
+}
+```
+
+Replace `C:\path\to\job-app-agent` with wherever you cloned this repo, then
+open a new PowerShell window (or run `. $PROFILE`) to pick it up. If you skip
+this step, just call the script directly wherever `add-app` is used below:
+
+```
+.venv/Scripts/python.exe scripts/add_job.py [url]
+```
+
+On macOS/Linux, add a similar function or alias to your shell profile
+(`~/.bashrc`, `~/.zshrc`, etc.), using `.venv/bin/python` instead.
 
 ### Adding a job
 

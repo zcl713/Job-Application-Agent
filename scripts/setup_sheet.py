@@ -80,6 +80,11 @@ def main():
     worksheet.update(values=[[DAYS_SINCE_FORMULA]], range_name="O2", raw=False)
     print("Days Since Applied auto-formula added at O2 (spills down automatically).")
 
+    # Job Description (column N) holds long pasted text. Clip it instead of
+    # wrapping so rows stay a fixed height rather than growing to fit the text.
+    worksheet.format("N2:N1000", {"wrapStrategy": "CLIP"})
+    print("Job Description column set to clip (no row expansion) on paste.")
+
 
 if __name__ == "__main__":
     main()

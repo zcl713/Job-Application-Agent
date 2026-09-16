@@ -97,7 +97,10 @@ def main():
         "",  # Next Step Date -- fill in manually
         result.job_link or "",
         "",  # Notes -- fill in manually
-        text,  # Job Description -- full text, kept in case the posting is taken down
+        # Job Description: full text, kept in case the posting is taken down.
+        # Collapsed to one line so the row doesn't grow to fit embedded newlines
+        # (Sheets expands rows for real line breaks no matter the wrap setting).
+        " ".join(text.split()),
     ]
     append_row(row)
     print("\nAdded to the Tracker sheet.")
